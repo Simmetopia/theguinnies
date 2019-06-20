@@ -1,5 +1,6 @@
 ---
 title: 7 dage til GuinniDay 
+description: Starten på en ny æra
 date: "2019-06-20T19:39:29.883Z"
 ---
 
