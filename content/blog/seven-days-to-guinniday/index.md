@@ -13,3 +13,12 @@ Jeg sidder derfor tit hjemme på mit kontor for at arbejde. En af de store styke
 krav til hvor jeg befinder mig.
 
 Derfor følte jeg at jeg havde brug for lidt ekstra liv. Vi har i forvejen en kat, Jack, men han irritere mig oftes bare når jeg arbejder.
+
+Derfor glæder jeg mig til at byde velkommen til Trøffel og Karamel!
+## Trøffel
+![trøffel](./trøffel.jpg)
+## Karamel
+![karamel](./karamel.jpg)
+
+Både jeg, og min datter glæder sig til de kommer fredag d. 28 juni! 
+
