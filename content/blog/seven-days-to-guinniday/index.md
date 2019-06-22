@@ -13,9 +13,3 @@ Jeg sidder derfor tit hjemme på mit kontor for at arbejde. En af de store styke
 krav til hvor jeg befinder mig.
 
 Derfor følte jeg at jeg havde brug for lidt ekstra liv. Vi har i forvejen en kat, Jack, men han irritere mig oftes bare når jeg arbejder.
-
-```javascript
-const a = 22;
-a += 2;
-console.log(a);
-```

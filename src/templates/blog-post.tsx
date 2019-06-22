@@ -1,16 +1,17 @@
 import { graphql, PageRendererProps } from "gatsby"
-import React from "react"
+import React, { SFC } from "react"
 import styled from "styled-components"
 import { Bio } from "../components/bio"
 import { Layout } from "../components/layout"
 import { FadeLink } from "../components/link"
 import { SEO } from "../components/seo"
-import { Query, SitePageContext } from "../graphql-types"
+import { SitePageContext, BlogPostBySlugQuery } from "../graphql-types"
 import { rhythm, styledScale } from "../utils/typography"
+import { blogPostMeta } from "../lib/createPages";
 
 interface Props extends PageRendererProps {
-  pageContext: SitePageContext
-  data: Query
+  pageContext: SitePageContext & blogPostMeta;
+  data: BlogPostBySlugQuery 
 }
 
 const Date = styled.p`
@@ -32,17 +33,17 @@ const PostNavigator = styled.ul`
   padding: 0;
 `
 
-const BlogPostTemplate = (props: Props) => {
-  const data = props.data!
+const BlogPostTemplate: SFC<Props> = ({data:rawData, location, pageContext}) => {
+  const data = rawData; 
   const post = data.markdownRemark!
   const excerpt = post.excerpt!
   const frontmatter = post.frontmatter!
   const html = post.html!
   const siteTitle = data.site!.siteMetadata!.title!
-  const { previous, next } = props.pageContext
+  const { previous, next } = pageContext
 
   return (
-    <Layout location={props.location} title={siteTitle}>
+    <Layout location={location} title={siteTitle}>
       <SEO
         title={frontmatter.title!}
         description={frontmatter.description || excerpt}
