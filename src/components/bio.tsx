@@ -50,7 +50,7 @@ export const Bio = () => {
         imgStyle={{ borderRadius: "50%" }}
       />
       <p>
-        Tanker fra <strong>{author}</strong> som data han blev 27 valgte at få
+        Tanker fra <strong>{author}</strong> som, da han blev 27 valgte at få
         to marsvin
       </p>
     </Content>
