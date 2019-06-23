@@ -50,4 +50,7 @@ export const SelectedChip = styled(Chip)`
   background-color: #ff9a00;
   border-color: #ff9a0f;
   color: #fff;
+  &:hover {
+    background-color: #ff9f5f;
+  }
 `;

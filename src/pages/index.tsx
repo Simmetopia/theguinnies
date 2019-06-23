@@ -1,5 +1,5 @@
 import { graphql, PageRendererProps, useStaticQuery } from 'gatsby';
-import React, { SFC } from 'react';
+import React, { SFC, useState } from 'react';
 import { Bio } from '../components/bio';
 import { Layout } from '../components/layout';
 import { FilterChips } from '../components/FilterChips';
@@ -8,13 +8,12 @@ import { RootDataStaticQuery, Maybe } from '../graphql-types';
 import { getProp } from '../utils/getProps';
 import { SingleBlogTitle } from '../components/SingleBlogTitle';
 import { Divider } from '../styles/basicStyledComponents';
-import queryString from 'query-string';
 
 type Props = PageRendererProps;
 
-const filterFunction = (queryTags: string | string[], tags: Maybe<string>[]) => {
+const filterFunction = (queryTags: string[], tags: Maybe<string>[]) => {
   let filterStatus = false;
-  if (!queryTags) {
+  if (queryTags.length === 0) {
     if (tags.indexOf('life') !== -1) {
       return true;
     } else {
@@ -28,10 +27,6 @@ const filterFunction = (queryTags: string | string[], tags: Maybe<string>[]) => 
           filterStatus = true;
         }
       });
-    } else {
-      if (tag === queryTags) {
-        filterStatus = true;
-      }
     }
   });
   return filterStatus;
@@ -63,10 +58,7 @@ const BlogIndex: SFC<Props> = ({ location }) => {
       }
     }
   `);
-  const queryParams = queryString.parse(location.search, {
-    arrayFormat: 'comma',
-  }) as { tags: string[] | string };
-
+  const [filteredTags, setFilteredTags] = useState<string[]>([]);
   const siteTitle =
     getProp(data)
       .on('site')
@@ -82,7 +74,7 @@ const BlogIndex: SFC<Props> = ({ location }) => {
     <Layout location={location} title={siteTitle}>
       <SEO title="newest posts" keywords={[`blog`, `gatsby`, `javascript`, `react`]} />
       <Bio />
-      {!!queryParams.tags && <FilterChips queryTags={queryParams.tags} />}
+      {!!filteredTags && <FilterChips handleFilteredTags={setFilteredTags} queryTags={filteredTags} />}
       {posts &&
         posts
           .filter(({ node }) => {
@@ -91,7 +83,7 @@ const BlogIndex: SFC<Props> = ({ location }) => {
                 .on('frontmatter')
                 .on('tags')
                 .get() || [];
-            return filterFunction(queryParams.tags, tags);
+            return filterFunction(filteredTags, tags);
           })
           .slice(0, 5)
           .map(({ node }) => {

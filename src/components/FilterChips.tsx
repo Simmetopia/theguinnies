@@ -3,7 +3,8 @@ import { Chip, Divider, SelectedChip } from '../styles/basicStyledComponents';
 import styled from 'styled-components';
 
 interface Props {
-  queryTags: string | string[];
+  queryTags: string[];
+  handleFilteredTags: (tags: string[]) => void;
 }
 
 const Container = styled.div`
@@ -12,8 +13,18 @@ const Container = styled.div`
 `;
 const tags = ['code', 'life', 'gatsby'];
 
-export const FilterChips: FC<Props> = ({ queryTags }) => {
+export const FilterChips: FC<Props> = ({ queryTags, handleFilteredTags }) => {
   const SmallDivider = Divider(0.2, 'row');
+  const onClick = (tag: string) => {
+    const indexOfTag = queryTags.indexOf(tag);
+    if (indexOfTag === -1) {
+      handleFilteredTags([...queryTags, tag]);
+    } else {
+      const workArray = [...queryTags];
+      workArray.splice(indexOfTag, 1);
+      handleFilteredTags(workArray);
+    }
+  };
   return (
     <Container>
       {tags.map(tag => {
@@ -27,7 +38,7 @@ export const FilterChips: FC<Props> = ({ queryTags }) => {
         const RChip = isSelected() ? SelectedChip : Chip;
         return (
           <Container key={tag}>
-            <RChip>{tag}</RChip>
+            <RChip onClick={() => onClick(tag)}>{tag}</RChip>
             <SmallDivider />
           </Container>
         );
