@@ -27,6 +27,27 @@ export const Card = styled.div`
   padding: 10px 5px;
 `;
 
-export const Divider = (amount: 1 | 2 | 3) => styled.div`
-  margin-bottom: ${rhythm(amount)};
+export const Divider = (amount: number, direction?: 'row' | 'column') => {
+  return direction === 'row'
+    ? styled.div`
+        margin-left: ${rhythm(amount)};
+      `
+    : styled.div`
+        margin-bottom: ${rhythm(amount)};
+      `;
+};
+export const Chip = styled.div`
+  border: 1px solid black;
+  border-radius: 15px;
+  width: auto;
+  padding: 5px 15px;
+  &:hover {
+    background-color: #eee;
+  }
+`;
+
+export const SelectedChip = styled(Chip)`
+  background-color: #ff9a00;
+  border-color: #ff9a0f;
+  color: #fff;
 `;

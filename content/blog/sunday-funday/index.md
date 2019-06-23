@@ -2,6 +2,7 @@
 title: En dejlig søndag
 description: En rigtig dejlig dag med sol og sommer, en glad datter og en skør kat 
 date: "2019-06-23T11:29:56.544Z"
+tags: [ life ]
 ---
 
 Sikket et dejligt vejr denne søndag dag. 
