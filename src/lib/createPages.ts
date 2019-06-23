@@ -1,5 +1,5 @@
 import path from 'path';
-import {GatsbyCreatePages} from '../types';
+import { GatsbyCreatePages } from '../types';
 
 interface Post {
   node: {
@@ -9,19 +9,17 @@ interface Post {
   };
 }
 
-export type blogPostMeta = {next: any; previous: any; slug: string};
-export const createPages: GatsbyCreatePages = async ({
-  graphql,
-  boundActionCreators,
-}) => {
-  const {createPage} = boundActionCreators;
+export interface blogPostMeta {
+  next: any;
+  previous: any;
+  slug: string;
+}
+export const createPages: GatsbyCreatePages = async ({ graphql, boundActionCreators }) => {
+  const { createPage } = boundActionCreators;
 
   const allMarkdown = await graphql(`
     {
-      allMarkdownRemark(
-        sort: {fields: [frontmatter___date], order: DESC}
-        limit: 1000
-      ) {
+      allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }, limit: 1000) {
         edges {
           node {
             fields {

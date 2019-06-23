@@ -1,8 +1,8 @@
-import { PageRendererProps } from "gatsby";
-import React, { ReactNode } from "react";
-import styled from "styled-components";
-import { rhythm, styledScale } from "../utils/typography";
-import { FadeLink } from "./link";
+import { PageRendererProps } from 'gatsby';
+import React, { ReactNode } from 'react';
+import styled from 'styled-components';
+import { rhythm, styledScale } from '../utils/typography';
+import { FadeLink } from './link';
 
 interface Props extends PageRendererProps {
   title: string;
