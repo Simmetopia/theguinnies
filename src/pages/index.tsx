@@ -1,8 +1,7 @@
 import { graphql, PageRendererProps, useStaticQuery } from 'gatsby';
-import React, { SFC, useState } from 'react';
+import React, { SFC } from 'react';
 import { Bio } from '../components/bio';
 import { Layout } from '../components/layout';
-import { FilterChips } from '../components/FilterChips';
 import { SEO } from '../components/seo';
 import { RootDataStaticQuery, Maybe } from '../graphql-types';
 import { getProp } from '../utils/getProps';
@@ -58,7 +57,7 @@ const BlogIndex: SFC<Props> = ({ location }) => {
       }
     }
   `);
-  const [filteredTags, setFilteredTags] = useState<string[]>([]);
+  // const [filteredTags, setFilteredTags] = useState<string[]>([]);
   const siteTitle =
     getProp(data)
       .on('site')
@@ -72,9 +71,9 @@ const BlogIndex: SFC<Props> = ({ location }) => {
   const SmallDivider = Divider(1);
   return (
     <Layout location={location} title={siteTitle}>
-      <SEO title="newest posts" keywords={[`blog`, `gatsby`, `javascript`, `react`]} />
+      <SEO title="newest posts" keywords={[`blog`, `marsvin`, `ingeniør`, `gatsby`]} />
       <Bio />
-      {!!filteredTags && <FilterChips handleFilteredTags={setFilteredTags} queryTags={filteredTags} />}
+      {/*!!filteredTags && <FilterChips handleFilteredTags={setFilteredTags} queryTags={filteredTags} />*/}
       {posts &&
         posts
           .filter(({ node }) => {
