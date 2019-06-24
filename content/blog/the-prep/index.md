@@ -12,7 +12,7 @@ Vi skyndte os alle tre at rive kassen op og se på de dele vi havde købt.
 
 Til vores store glæde var buret faktisk meget større end vi havde gået at bildt os selv ind, så vi er ikke i tvivl om at Trøffel og Melle får det rigtig godt derinde.
 Efter at det blev samlet skar vi en affaldssæk op og lagde den i bunden af buret. Rammen er lavet af træ, så vi vil helst ikke have at det bliver vådt.
-Derefter skulle der bundstrøelse vi. Vi stræber efter at leve grønt, derfor er vores bundstrøelse genanvendt papir.
+Derefter skulle der bundstrøelse i. Vi stræber efter at leve grønt, derfor er vores bundstrøelse genanvendt papir.
 
 ![st1](./step1.jpg)
 
