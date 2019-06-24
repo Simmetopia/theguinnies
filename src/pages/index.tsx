@@ -82,7 +82,7 @@ const BlogIndex: SFC<Props> = ({ location }) => {
                 .on('frontmatter')
                 .on('tags')
                 .get() || [];
-            return filterFunction(filteredTags, tags);
+            return filterFunction([], tags);
           })
           .slice(0, 5)
           .map(({ node }) => {
