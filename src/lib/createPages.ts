@@ -18,7 +18,7 @@ export interface BlogPostMeta {
 export const createPages: GatsbyCreatePages = async ({ graphql, boundActionCreators }) => {
   const { createPage } = boundActionCreators;
 
-  const allMarkdown = await graphql`
+  const allMarkdown = await graphql(`
     query MarkdownRemarkCreatePages {
       allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }, limit: 1000) {
         edges {
@@ -36,7 +36,7 @@ export const createPages: GatsbyCreatePages = async ({ graphql, boundActionCreat
         title
       }
     }
-  `;
+  `);
 
   if (allMarkdown.errors) {
     throw allMarkdown.errors;
