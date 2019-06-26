@@ -30,7 +30,7 @@ export const SEO = (props: Props) => {
 
   const { site } = useStaticQuery(
     graphql`
-      query {
+      query SearchEngine {
         site {
           siteMetadata {
             title

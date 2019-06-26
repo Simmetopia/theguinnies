@@ -1,5 +1,6 @@
 import path from 'path';
 import { GatsbyCreatePages } from '../types';
+import { MarkdownRemarkFragment } from '../../__generated__/MarkdownRemarkFragment';
 
 interface Post {
   node: {
@@ -9,30 +10,33 @@ interface Post {
   };
 }
 
-export interface blogPostMeta {
-  next: any;
-  previous: any;
+export interface BlogPostMeta {
+  next: MarkdownRemarkFragment;
+  previous: MarkdownRemarkFragment;
   slug: string;
 }
 export const createPages: GatsbyCreatePages = async ({ graphql, boundActionCreators }) => {
   const { createPage } = boundActionCreators;
 
-  const allMarkdown = await graphql(`
-    {
+  const allMarkdown = await graphql`
+    query MarkdownRemarkCreatePages {
       allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }, limit: 1000) {
         edges {
           node {
-            fields {
-              slug
-            }
-            frontmatter {
-              title
-            }
+            ...MarkdownRemarkFragment
           }
         }
       }
     }
-  `);
+    fragment MarkdownRemarkFragment on MarkdownRemark {
+      fields {
+        slug
+      }
+      frontmatter {
+        title
+      }
+    }
+  `;
 
   if (allMarkdown.errors) {
     throw allMarkdown.errors;

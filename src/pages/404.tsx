@@ -7,7 +7,7 @@ type Props = PageRendererProps;
 
 export const NotFoundPage = (props: Props) => {
   const data = useStaticQuery(graphql`
-    query {
+    query SiteErrorData {
       site {
         siteMetadata {
           title

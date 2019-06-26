@@ -5,6 +5,7 @@
   "version": "0.1.0",
   "author": "Simon Bundgaard-Egeberg ",
   "dependencies": {
+    "apollo": "^2.14.1",
     "babel-plugin-styled-components": "^1.10.1",
     "eslint-plugin-graphql": "^3.0.3",
     "eslint-plugin-prettier": "^3.1.0",
@@ -65,6 +66,7 @@
     "eslint-plugin-react": "^7.13.0",
     "eslint-plugin-standard": "^4.0.0",
     "graphql": "^14.3.1",
+    "graphql-tag": "^2.10.1",
     "prettier": "^1.18.2",
     "typescript": "^3.5.2"
   },
@@ -83,6 +85,6 @@
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\"",
     "tsc": "tsc --noEmit",
     "lint": "tslint --project .",
-    "gql-codegen": "graphql-codegen --config codegen.yml"
+    "codegen": "yarn apollo client:codegen --target=typescript --outputFlat"
   }
 }

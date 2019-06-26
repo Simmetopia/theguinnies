@@ -3,14 +3,14 @@ import React, { SFC } from 'react';
 import { Bio } from '../components/bio';
 import { Layout } from '../components/layout';
 import { SEO } from '../components/seo';
-import { RootDataStaticQuery, Maybe } from '../graphql-types';
 import { getProp } from '../utils/getProps';
 import { SingleBlogTitle } from '../components/SingleBlogTitle';
 import { Divider } from '../styles/basicStyledComponents';
+import { RootDataStatic } from '../../__generated__/RootDataStatic';
 
 type Props = PageRendererProps;
 
-const filterFunction = (queryTags: string[], tags: Maybe<string>[]) => {
+const filterFunction = (queryTags: string[], tags: (string | undefined | null)[]) => {
   let filterStatus = false;
   if (queryTags.length === 0) {
     if (tags.indexOf('life') !== -1) {
@@ -32,7 +32,7 @@ const filterFunction = (queryTags: string[], tags: Maybe<string>[]) => {
 };
 
 const BlogIndex: SFC<Props> = ({ location }) => {
-  const data: RootDataStaticQuery = useStaticQuery(graphql`
+  const data: RootDataStatic = useStaticQuery(graphql`
     query RootDataStatic {
       site {
         siteMetadata {

@@ -5,13 +5,14 @@ import { Bio } from '../components/bio';
 import { Layout } from '../components/layout';
 import { FadeLink } from '../components/link';
 import { SEO } from '../components/seo';
-import { SitePageContext, BlogPostBySlugQuery } from '../graphql-types';
 import { rhythm, styledScale } from '../utils/typography';
-import { blogPostMeta } from '../lib/createPages';
+import { BlogPostMeta } from '../lib/createPages';
+import { getProp } from '../utils/getProps';
+import { BlogPostBySlug } from '../../__generated__/BlogPostBySlug';
 
 interface Props extends PageRendererProps {
-  pageContext: SitePageContext & blogPostMeta;
-  data: BlogPostBySlugQuery;
+  pageContext: BlogPostMeta;
+  data: BlogPostBySlug;
 }
 
 const Date = styled.p`
@@ -35,33 +36,59 @@ const PostNavigator = styled.ul`
 
 const BlogPostTemplate: SFC<Props> = ({ data: rawData, location, pageContext }) => {
   const data = rawData;
-  const post = data.markdownRemark!;
-  const excerpt = post.excerpt!;
-  const frontmatter = post.frontmatter!;
-  const html = post.html!;
-  const siteTitle = data.site!.siteMetadata!.title!;
+  const post = getProp(data)
+    .on('markdownRemark')
+    .get();
+  const excerpt = getProp(post)
+    .on('excerpt')
+    .get();
+  const frontmatter = getProp(post)
+    .on('frontmatter')
+    .get();
+  const html = getProp(post)
+    .on('html')
+    .get();
+  const siteTitle = getProp(data)
+    .on('site')
+    .on('siteMetadata')
+    .on('title')
+    .get();
+  const frontmatterTitle = getProp(post)
+    .on('frontmatter')
+    .on('title')
+    .get();
+  const frontmatterDate = getProp(post)
+    .on('frontmatter')
+    .on('date')
+    .get();
+  const frontmatterHtml = getProp(post)
+    .on('frontmatter')
+    .on('description')
+    .get();
   const { previous, next } = pageContext;
-
+  if (!excerpt || !frontmatter || !html || !siteTitle || !frontmatterTitle || !frontmatterDate || !frontmatterHtml) {
+    return null;
+  }
   return (
     <Layout location={location} title={siteTitle}>
-      <SEO title={frontmatter.title!} description={frontmatter.description || excerpt} />
-      <h1>{post.frontmatter!.title}</h1>
-      <Date>{frontmatter.date}</Date>
+      <SEO title={frontmatterTitle} description={frontmatter.description || excerpt} />
+      <h1>{frontmatterTitle}</h1>
+      <Date>{frontmatterDate}</Date>
       <div dangerouslySetInnerHTML={{ __html: html }} />
       <Divider />
       <Bio />
       <PostNavigator>
         <li>
-          {previous && (
-            <FadeLink to={previous.fields!.slug!} rel="prev">
-              ← {previous.frontmatter!.title}
+          {previous && previous.fields && previous.frontmatter && previous.fields.slug && (
+            <FadeLink to={previous.fields.slug} rel="prev">
+              ← {previous.frontmatter.title}
             </FadeLink>
           )}
         </li>
         <li>
-          {next && (
-            <FadeLink to={next.fields!.slug!} rel="next">
-              {next.frontmatter!.title} →
+          {next && next.fields && next.frontmatter && next.fields.slug && (
+            <FadeLink to={next.fields.slug} rel="next">
+              {next.frontmatter.title} →
             </FadeLink>
           )}
         </li>
