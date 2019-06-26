@@ -1,12 +1,9 @@
 {
-  "name": "gatsby-starter-blog-typescript",
+  "name": "The Guinnies",
   "private": true,
-  "description": "A starter gatsby blog using typescript",
+  "description": "A simple blog",
   "version": "0.1.0",
-  "author": "Greg Perlman <gperlman27@gmail.com>",
-  "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
-  },
+  "author": "Simon Bundgaard-Egeberg ",
   "dependencies": {
     "babel-plugin-styled-components": "^1.10.1",
     "eslint-plugin-graphql": "^3.0.3",
@@ -16,8 +13,6 @@
     "gatsby-plugin-feed": "^2.3.0",
     "gatsby-plugin-google-analytics": "^2.1.0",
     "gatsby-plugin-lodash": "^3.1.0",
-    "gatsby-plugin-manifest": "^2.2.0",
-    "gatsby-plugin-offline": "^2.2.0",
     "gatsby-plugin-react-helmet": "^3.1.0",
     "gatsby-plugin-sharp": "^2.2.0",
     "gatsby-plugin-styled-components": "^3.1.0",
@@ -28,7 +23,6 @@
     "gatsby-remark-copy-linked-files": "^2.1.0",
     "gatsby-remark-images": "^3.1.0",
     "gatsby-remark-prismjs": "^3.3.0",
-    "gatsby-remark-responsive-iframe": "^2.2.0",
     "gatsby-remark-smartypants": "^2.1.0",
     "gatsby-source-filesystem": "^2.1.0",
     "gatsby-transformer-remark": "^2.5.0",
@@ -74,16 +68,12 @@
     "prettier": "^1.18.2",
     "typescript": "^3.5.2"
   },
-  "homepage": "https://github.com/gperl27/Gatsby-Starter-Blog-Typescript#readme",
+  "homepage": "https://theguinnies.netlify.com",
   "keywords": [
     "gatsby"
   ],
   "license": "MIT",
   "main": "n/a",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/gperl27/Gatsby-Starter-Blog-Typescript.git"
-  },
   "scripts": {
     "build": "gatsby build",
     "dev": "gatsby develop",
