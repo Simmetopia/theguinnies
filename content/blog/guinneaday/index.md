@@ -1,6 +1,6 @@
 ---
 title: Guinnea day!
-description:
+description: Dagen er ankommet!
 date: '2019-06-30T06:47:31.651Z'
 tags: [life]
 ---
